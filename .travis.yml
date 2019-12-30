@@ -8,3 +8,13 @@ before_install:
 
 script:
     -   docker run -e CI=true oakkas/docker-react2 npm run test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "docker-react2"
+    env: "DockerReact2-env"
+    bucket-name: "elasticbeanstalk-us-east-1-798851999247"
+    bucket_path: "docker-react2"
+    on:
+        branch: master
